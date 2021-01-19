@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
+    <script src="js/style.js"></script>
+</head>
+<body>
+
+{{> header}}
+
+<div class="row">
+    <div class="main">
+        <div class="main-content c-d7">
+            <div style="display: flex">
+                {{#posts}}
+                    <div class=" c-d7">
+                        <a class="hello" style="font-size: 2rem; text-decoration: none" href="posts?id={{id}}">{{header}}</a>
+                        <h5 class="hello">{{author}}, {{postdate}}</h5>
+                        <p style="text-align: center;"><img id="postImg" onerror="hidePhoto()" src="{{photo}}" style="max-width: 90%;" name="postimg"></p>
+                        <p class="mt-3">{{post}}</p>
+                    </div>
+                {{/posts}}
+            </div>
+
+            <div class="comments">
+                <p>
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Добавить комментарий
+                    </button>
+                </p>
+                <div class="collapse" id="collapseExample">
+
+                        <div class="form-group">
+                            {{#posts}}
+                                <form action="/comment/{{id}}" method="post">
+                                    <input type="hidden" name="{{_csrf.parameterName}}"
+                                           value="{{_csrf.token}}" />
+                            <label for="exampleFormControlTextarea1">Добавить комментарий</label>
+                            <input class="form-control mb-3" id="exampleFormControlTextarea1" rows="3" name="comment">
+
+                        <button type="submit" class="btn btn-primary">Добавить</button>
+
+                            {{/posts}}
+                    </form>
+                        </div>
+                </div>
+            </div>
+<!--        </div>-->
+        <div class="c-d7">
+            {{#comments}}
+            <div class="commentaries mb-3">
+                <div style="display: flex">
+                    <div>{{author}}, </div>
+                    <div>{{commentdate}}</div>
+                </div>
+                <p>{{commenttext}}</p>
+            </div>
+            {{/comments}}
+        </div>
+
+        </div>
+    </div>
+        {{> subs}}
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+</html>

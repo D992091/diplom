@@ -1,0 +1,41 @@
+<div class="side">
+    <div class="side-content c-d7">
+        <!--            <h2>About Me</h2>-->
+        <!--            <h5>Photo of me:</h5>-->
+        <div style="display: flex">
+            <div><img class="circle-img" src="{{photo}}"></div>
+            <h1><a class="hello" href="profile">{{login}}</a></h1>
+        </div>
+        <table class="table sub-table table-borderless c-d7">
+            <tbody>
+            <tr>
+                <th scope="row">Посты:</th>
+                <td>{{postnumb}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Подписчики:</th>
+                <td>{{whonumb}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Подписки</th>
+                <td>{{whomnumb}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="side-content c-d7">
+        <h3>Подписки</h3>
+        <table class="table sub-table table-borderless c-d7">
+            <tbody>
+            {{#subscribes}}
+                <tr>
+                    <td>
+                        <img src={{ph}} class="circle-img">
+                    </td>
+                    <td class="tbl"><a class="hello" href="/users?sub={{whom}}">{{whom}}</a> </td>
+                </tr>
+            {{/subscribes}}
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+
+<div class="header">
+    <a href="/" ><img src="connection.jpg" style="height: 60px; width: 100px;"></a>
+    <form action="/search" method="post" style="display: flex; align-items: center">
+        <input type="text" class="form-control input__search" id="TitleAddPost" placeholder="Title" name="search" required>
+        <input type="hidden" name="{{_csrf.parameterName}}"
+               value="{{_csrf.token}}" />
+        <button class="btn__login" type="submit">Найти</button>
+    </form>
+    <div style="margin-left: auto"><img class="circle-img" src="{{photo}}"></div>
+    <h1 style="font-size: 1rem"><a class="hello" href="profile">{{login}} </a> </h1>
+    <form action="/logout" method="post">
+        <input class="btn__login" type="submit" value="Выход"/>
+        <input type="hidden" name="{{_csrf.parameterName}}"
+               value="{{_csrf.token}}" />
+    </form>
+</div>
+
+
